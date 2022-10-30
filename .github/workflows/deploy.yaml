@@ -18,18 +18,16 @@ jobs:
       - name: Delete Demo Contents
         run: rm -rf ./content/*
 
+      - run: mkdir temp
+
       - name: Clone Vault
         uses: actions/checkout@v2
         with:
           repository: aren227/obsidian-general-vault
-          path: ./content
+          path: ./temp
           token: ${{ secrets.VAULT_TOKEN }}
 
-      - run: shopt -s extglob
-        shell: bash
-
-      - run: cd ./content && rm -rf !(Wiki|_index.md)
-        shell: bash
+      - run: mv ./temp/_index.md ./temp/Wiki ./content || true
 
       - name: Build Link Index
         uses: jackyzha0/hugo-obsidian@v2.18
