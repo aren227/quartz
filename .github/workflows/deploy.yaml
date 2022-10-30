@@ -21,11 +21,12 @@ jobs:
       - name: Clone Vault
         uses: actions/checkout@v2
         with:
-          working-directory: ./content
+          repository: aren227/obsidian-general-vault
+          path: ./content
           token: ${{ secrets.VAULT_TOKEN }}
 
-      - name: Delete Unnecessary Folders
-        run: shopt -s extglob && rm -rf !(Wiki|_index.md)
+      - run: shopt -s extglob
+      - run: cd ./content && rm -rf !(Wiki|_index.md)
 
       - name: Build Link Index
         uses: jackyzha0/hugo-obsidian@v2.18
