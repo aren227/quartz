@@ -20,8 +20,8 @@ jobs:
 
       - name: Clone Vault
         uses: actions/checkout@v2
-        working-directory: ./content
         with:
+          working-directory: ./content
           token: ${{ secrets.VAULT_TOKEN }}
 
       - name: Delete Unnecessary Folders
