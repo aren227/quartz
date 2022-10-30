@@ -13,6 +13,18 @@ jobs:
         with:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Delete Demo Contents
+        run: rm -rf ./content/*
+
+      - name: Clone Vault
+        uses: actions/checkout@v2
+        working-directory: ./content
+        with:
+          token: ${{ secrets.VAULT_TOKEN }}
+
+      - name: Delete Unnecessary Folders
+        run: shopt -s extglob && rm -rf !(Wiki|_index.md)
+
       - name: Build Link Index
         uses: jackyzha0/hugo-obsidian@v2.18
         with:
@@ -36,4 +48,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: master  # deploying branch
-          cname: quartz.jzhao.xyz
+          cname: aren227.me

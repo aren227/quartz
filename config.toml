@@ -1,6 +1,6 @@
-baseURL = "https://quartz.jzhao.xyz/"
+baseURL = "https://aren227.me/"
 languageCode = "en-us"
-googleAnalytics = "G-XYFD95KB4J"
+googleAnalytics = "G-TENWP14PCC"
 relativeURLs = false
 disablePathToLower = true
 ignoreFiles = [
