@@ -26,7 +26,10 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN }}
 
       - run: shopt -s extglob
+        shell: bash
+
       - run: cd ./content && rm -rf !(Wiki|_index.md)
+        shell: bash
 
       - name: Build Link Index
         uses: jackyzha0/hugo-obsidian@v2.18
